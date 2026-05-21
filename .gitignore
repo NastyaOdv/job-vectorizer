@@ -47,9 +47,9 @@ env/
 htmlcov/
 .hypothesis/
 
-# ML / models cache
+# ML / model weights cache (not src/models/)
 .cache/
-models/
+/models/
 *.pt
 *.bin
 
