@@ -1,0 +1,2 @@
+class DuplicateJobError(Exception):
+    pass
