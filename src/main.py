@@ -5,8 +5,6 @@ import threading
 
 from consumers.cv_consumer import cv_consumer, start as start_cv_consumer
 from consumers.jobs_consumer import jobs_consumer, start as start_jobs_consumer
-from consumers.notifications_consumer import notifications_consumer
-from consumers.tasks_consumer import tasks_consumer
 from src.logger.logger_config import logger
 
 if sys.platform == "win32":
@@ -14,9 +12,7 @@ if sys.platform == "win32":
 
 ALL_CONSUMERS = [
     jobs_consumer,
-    cv_consumer,
-    tasks_consumer,
-    notifications_consumer,
+    cv_consumer
 ]
 
 _shutdown_started = False
@@ -39,11 +35,7 @@ def main() -> None:
 
     threads = [
         threading.Thread(target=start_jobs_consumer, name="jobs-consumer"),
-        threading.Thread(target=start_cv_consumer, name="cv-consumer"),
-        # threading.Thread(target=start_tasks_consumer, name="tasks-consumer"),
-        # threading.Thread(
-        #     target=start_notifications_consumer, name="notifications-consumer"
-        # ),
+        threading.Thread(target=start_cv_consumer, name="cv-consumer")
     ]
 
     for thread in threads:
